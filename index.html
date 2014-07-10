@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mathbirthdays.com</title>
+	<link href='http://fonts.googleapis.com/css?family=Cuprum:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<link rel="stylesheet" href="styles.css">
+<body>
+	<header class="head">
+		<div class="row">			
+			<div class="box-head">
+				<h1>mathbirthdays.<span>com</span></h1>
+			    <div class="span4">
+			        <h2><code>Day</code></h2>
+			        <input id="day" type="range" min="1" max = "31" value="0" data-rangeslider>
+			        <p><output></output></p>
+			    </div>
+			    <div class="span4">
+			        <h2><code>Month</code></h2>
+			        <input id="month" type="range" min="1" max = "12" value="0" data-rangeslider>
+			        <p><output></output></p>
+			    </div>
+			    <div class="span4">
+			        <h2><code>Year</code></h2>
+			        <input id="year" type="range" min="1970" max = "2014" value="0" data-rangeslider>
+			        <p><output></output></p>
+			    </div>			    			    
+			</div>
+			<center><button id="btnaction">Calculate My Mathbirth Day</button></center>
+		</div>
+	</header>
+    <section>
+        <div class="row">
+            <div id="muestra"></div>
+        </div>
+    </section>    
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="rangeslider.js"></script>	
+<script>
+    $(function() {
+
+        var $document   = $(document),
+            selector    = '[data-rangeslider]',
+            $element    = $(selector);
+
+        // Example functionality to demonstrate a value feedback
+        function valueOutput(element) {
+            var value = element.value,
+                output = element.parentNode.getElementsByTagName('output')[0];
+            output.innerHTML = value;
+        }
+        for (var i = $element.length - 1; i >= 0; i--) {
+            valueOutput($element[i]);
+        };
+        $document.on('change', 'input[type="range"]', function(e) {
+            valueOutput(e.target);
+        });
+
+        // Example functionality to demonstrate disabled functionality
+        $document .on('click', '#js-example-disabled button[data-behaviour="toggle"]', function(e) {
+            var $inputRange = $('input[type="range"]', e.target.parentNode);
+
+            if ($inputRange[0].disabled) {
+                $inputRange.prop("disabled", false);
+            }
+            else {
+                $inputRange.prop("disabled", true);
+            }
+            $inputRange.rangeslider('update');
+        });
+
+        // Example functionality to demonstrate programmatic value changes
+        $document.on('click', '#js-example-change-value button', function(e) {
+            var $inputRange = $('input[type="range"]', e.target.parentNode),
+                value = $('input[type="number"]', e.target.parentNode)[0].value;
+
+            $inputRange.val(value).change();
+        });
+
+        // Example functionality to demonstrate destroy functionality
+        $document
+            .on('click', '#js-example-destroy button[data-behaviour="destroy"]', function(e) {
+                $('input[type="range"]', e.target.parentNode).rangeslider('destroy');
+            })
+            .on('click', '#js-example-destroy button[data-behaviour="initialize"]', function(e) {
+                $('input[type="range"]', e.target.parentNode).rangeslider({ polyfill: false });
+            });
+
+        // Basic rangeslider initialization
+        $element.rangeslider({
+
+            // Deactivate the feature detection
+            polyfill: false,
+
+            // Callback function
+            onInit: function() {},
+
+            // Callback function
+            onSlide: function(position, value) {},
+
+            // Callback function
+            onSlideEnd: function(position) {}
+        });
+
+    });
+
+	
+   
+
+	$("#btnaction").click( function(){
+        var fa = new Date();
+        var faML = fa.getTime();
+        var dayP = $("#day").val();
+        var monthP = $("#month").val();
+        var yearP = $("#year").val();
+        var birthday = new Date (yearP + "," + monthP + "," + dayP) ; 
+        var birthdayML = birthday.getTime();
+        console.log(faML);   
+        console.log(birthdayML);
+        // Set the unit values in milliseconds.
+        var msecPerMinute = 1000 * 60;
+        var msecPerHour = msecPerMinute * 60;
+        var msecPerDay = msecPerHour * 24;
+
+        var interval = faML - birthdayML 
+
+        var days = Math.floor(interval / msecPerHour);
+        console.log(interval.toString());
+        
+
+        
+
+
+    });
+
+
+    </script>
+
+</body>
+</html>
