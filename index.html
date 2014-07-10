@@ -23,7 +23,7 @@
 			    </div>
 			    <div class="span4">
 			        <h2><code>Year</code></h2>
-			        <input id="year" type="range" min="1970" max = "2014" value="0" data-rangeslider>
+			        <input id="year" type="range" min="1900" max = "2014" value="0" data-rangeslider>
 			        <p><output></output></p>
 			    </div>			    			    
 			</div>
@@ -119,9 +119,7 @@
         var birthday = new Date (yearP + "," + monthP + "," + dayP) ; 
         var birthdayML = birthday.getTime();
 
-        // Set the unit values in milliseconds.
-        var msecPerMinute = 1000 * 60;
-        var msecPerHour = msecPerMinute * 60;
+        // Milisegundos por dia.
         var msecPerDay = 86400000;
 
         var interval = faML - birthdayML 
@@ -130,29 +128,29 @@
         var days = Math.floor(interval / msecPerDay);
         console.log(days.toString());
         var n1 = Math.pow(10,1);
-        var n2 = Math.pow(10,2);
-        var n3 = Math.pow(10,3);
-        var n4 = Math.pow(10,4);
-        var n5 = Math.pow(10,5);
-        var n6 = Math.pow(10,6);
-        var n7 = Math.pow(10,7);
-        var n8 = Math.pow(10,8);
-        var n9 = Math.pow(10,9);
-        var n10 = Math.pow(10,10);
+        var n2 = Math.pow(10,2);    // 100
+        var n3 = Math.pow(10,3);    // 1000
+        var n4 = Math.pow(10,4);    // 10000
+        var n5 = Math.pow(10,5);    // 100000
+        var n6 = Math.pow(10,6);    // 1000000
+        var n7 = Math.pow(10,7);    // 10000000
+        var n8 = Math.pow(10,8);    // 100000000
+        var n9 = Math.pow(10,9);    // 1000000000
+        var n10 = Math.pow(10,10);  // 10000000000
 
 
 
 
-        if(days <= n1){console.log("1");};
-        if(days > n1 && days <= n2){console.log("2");};
-        if(days > n2 && days <= n3){console.log("3");};
-        if(days > n3 && days <= n4){console.log("4");};
-        if(days > n4 && days <= n5){console.log("5");};
-        if(days > n5 && days <= n6){console.log("6");};
-        if(days > n6 && days <= n7){console.log("7");};
-        if(days > n7 && days <= n8){console.log("8");};
-        if(days > n8 && days <= n9){console.log("9");};
-        if(days > n9 && days <= n10){console.log("10");};
+        if(days <= n1){console.log("1 año");};
+        if(days > n1 && days <= n2){console.log("2 años");};
+        if(days > n2 && days <= n3){console.log("3 años");};
+        if(days > n3 && days <= n4){console.log("4 años");};
+        if(days > n4 && days <= n5){console.log("5 años");};
+        if(days > n5 && days <= n6){console.log("6 años");};
+        if(days > n6 && days <= n7){console.log("7 años");};
+        if(days > n7 && days <= n8){console.log("8 años");};
+        if(days > n8 && days <= n9){console.log("9 años");};
+        if(days > n9 && days <= n10){console.log("10 años");};
 
 
     });
