@@ -118,17 +118,17 @@
         var yearP = $("#year").val();
         var birthday = new Date (yearP + "," + monthP + "," + dayP) ; 
         var birthdayML = birthday.getTime();
-        console.log(faML);   
-        console.log(birthdayML);
+
         // Set the unit values in milliseconds.
         var msecPerMinute = 1000 * 60;
         var msecPerHour = msecPerMinute * 60;
-        var msecPerDay = msecPerHour * 24;
+        var msecPerDay = 86400000;
 
         var interval = faML - birthdayML 
+        
 
-        var days = Math.floor(interval / msecPerHour);
-        console.log(interval.toString());
+        var days = Math.floor(interval / msecPerDay);
+        console.log(days.toString());
         
 
         
